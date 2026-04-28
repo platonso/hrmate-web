@@ -1,30 +1,28 @@
 # HRMate Web
 
-> Веб-интерфейс HR Mate на React
-
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react&logoColor=white" alt="React 18"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Vite-6.3.5-646CFF?logo=vite&logoColor=white" alt="Vite"></a>
-  <a href="#"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" alt="TypeScript"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Tailwind-4.1.12-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white" alt="Docker"></a>
-</p>
+<div>
+  <img src="https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react&logoColor=white" alt="React 18">
+  <img src="https://img.shields.io/badge/Vite-6.3.5-646CFF?logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind-4.1.12-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white" alt="Docker">
+</div>
 
 ## Оглавление
 
 - [Описание](#описание)
+- [Веб-интерфейс](#веб-интерфейс)
 - [Технологии](#технологии)
 - [Функционал](#функционал)
 - [Конфигурация](#конфигурация)
 - [Быстрый старт](#быстрый-старт)
-- [Структура проекта](#структура-проекта)
 - [Разработка](#разработка)
 - [Лицензия](#лицензия)
 
 
 ## Описание
 
-**HRMate Web** — это современное React-приложение, предоставляющее интуитивный веб-интерфейс для системы управления персоналом. Построен с акцентом на производительность и удобство разработки, предлагая адаптивную панель управления с разграничением прав для сотрудников, HR-специалистов и администраторов.
+React-приложение, предоставляющее веб-интерфейс для сервиса автоматизации взаимодействия сотрудников с отделом кадров. Реализована панель управления с разграничением прав для сотрудников, HR-специалистов и администраторов.
 
 **Ключевые особенности:**
 - **Современный UI/UX** — Построен на компонентах shadcn/ui и Tailwind CSS
@@ -33,33 +31,33 @@
 - **JWT-аутентификация** — Безопасная авторизация с сохранением токенов
 - **Загрузка файлов Drag & Drop** — Удобное управление документами
 
-## 📸 Скриншоты
+## Веб-интерфейс
 
 <div align="center">
 
 **Авторизация**
 
-<img src="assets/login.png" alt="Авторизация" width="70%"/>
+<img src="assets/login.png" alt="Авторизация"/>
 
 **Создание заявки (сотрудник)**
 
-<img src="assets/creating.png" alt="Создание заявки" width="70%"/>
+<img src="assets/creating.png" alt="Создание заявки"/>
 
 **Рассмотрение заявок (hr)**
 
-<img src="assets/reviewing.png" alt="Рассмотрение заявок" width="70%"/>
+<img src="assets/reviewing.png" alt="Рассмотрение заявок"/>
 
 **Отслеживание заявок (сотрудник)**
 
-<img src="assets/tracking.png" alt="Отслеживание заявок" width="70%"/>
+<img src="assets/tracking.png" alt="Отслеживание заявок"/>
 
 **Решение по заявке (сотрудник)**
 
-<img src="assets/resolution.png" alt="Решение по заявке" width="70%"/>
+<img src="assets/resolution.png" alt="Решение по заявке"/>
 
 **Управление пользователями (admin)**
 
-<img src="assets/users.png" alt="Управление пользователями" width="70%"/>
+<img src="assets/users.png" alt="Управление пользователями"/>
 
 </div>
 
@@ -120,7 +118,7 @@
 
 ### Nginx Config (Docker/Production)
 
-Проксирование API для обхода CORS в продакшене настроено в `nginx.conf`:
+Проксирование API настраивается в `nginx.conf`:
 
 ```conf
     location /api/ {
@@ -177,3 +175,7 @@ make logs
 # Остановка и удаление контейнеров
 make clean
 ```
+
+## Лицензия
+
+Проект распространяется под лицензией MIT. [LICENSE](./LICENSE).
