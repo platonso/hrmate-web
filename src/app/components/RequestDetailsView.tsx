@@ -166,7 +166,7 @@ const formatDateTime = (dateString: string) => {
         <svg className="size-[11px] block shrink-0" viewBox="0 0 11 11" fill="none">
           <circle cx="5.5" cy="5.5" r="4.75" fill={color.fill} stroke={color.stroke} strokeWidth="1.5" />
         </svg>
-        <span className="font-['Geist:Medium',sans-serif] font-medium text-[12px] text-[#292524] leading-[20px]">
+        <span className="font-['Geist:Medium',sans-serif] font-medium text-[12px] text-[#292524] dark:text-stone-100 leading-[20px]">
           {color.text}
         </span>
       </div>
@@ -293,7 +293,7 @@ const formatDateTime = (dateString: string) => {
     return (
       <div className="h-full py-6 overflow-y-auto">
         <div className="flex items-center justify-center h-64">
-          <div className="text-[#79716b] font-['Geist:Regular',sans-serif]">Загрузка...</div>
+          <div className="text-[#79716b] dark:text-stone-400 font-['Geist:Regular',sans-serif]">Загрузка...</div>
         </div>
       </div>
     );
@@ -305,7 +305,7 @@ const formatDateTime = (dateString: string) => {
       <div>
         <button
           onClick={onBack}
-          className="mb-4 flex items-center gap-[6px] text-[#79716b] hover:text-[#292524] transition-colors"
+          className="mb-4 flex items-center gap-[6px] text-[#79716b] dark:text-stone-400 hover:text-[#292524] dark:text-stone-100 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -317,39 +317,39 @@ const formatDateTime = (dateString: string) => {
       <div className="grid lg:grid-cols-[1fr_320px] gap-5">
         <div className="space-y-5">
           {/* Main Details Card */}
-          <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
-            <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center justify-between">
+          <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
+            <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <FileText className="w-4 h-4 text-gray-500" />
-                <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                   Заявка
                 </h2>
               </div>
               {getStatusDisplay(request.status)}
             </div>
 
-            <div className="bg-white p-4 space-y-4">
+            <div className="bg-white dark:bg-stone-900 p-4 space-y-4">
               <div>
                 <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Тема</p>
-                <p className="text-sm text-gray-900 font-medium">{request.subject}</p>
+                <p className="text-sm text-gray-900 dark:text-stone-100 font-medium">{request.subject}</p>
               </div>
               <div>
                 <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Описание</p>
-                <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{request.description || '—'}</p>
+                <p className="text-sm text-gray-700 dark:text-stone-300 leading-relaxed whitespace-pre-wrap">{request.description || '—'}</p>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Дата начала</p>
-                  <p className="text-sm text-gray-700">{request.startDate ? formatDate(request.startDate) : '—'}</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Начало</p>
+                  <p className="text-sm text-gray-700 dark:text-stone-300">{request.startDate ? formatDate(request.startDate) : '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Дата окончания</p>
-                  <p className="text-sm text-gray-700">{request.endDate ? formatDate(request.endDate) : '—'}</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Конец</p>
+                  <p className="text-sm text-gray-700 dark:text-stone-300">{request.endDate ? formatDate(request.endDate) : '—'}</p>
                 </div>
               </div>
               <div>
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Дата создания</p>
-                <p className="text-sm text-gray-700">{formatDateTime(request.createdAt)}</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Создано</p>
+                <p className="text-sm text-gray-700 dark:text-stone-300">{formatDateTime(request.createdAt)}</p>
               </div>
               {request.attachDocs && request.attachDocs.length > 0 && (
                 <div>
@@ -357,7 +357,7 @@ const formatDateTime = (dateString: string) => {
                   <div className="flex flex-col gap-2">
                     {request.attachDocs.map((doc) => (
                       <div key={doc.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 group w-fit min-w-[280px]">
-                        <div className="w-8 h-8 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-sm flex-shrink-0">
+                        <div className="w-8 h-8 bg-white dark:bg-stone-900 border border-gray-200 rounded-lg flex items-center justify-center text-sm flex-shrink-0">
                           📄
                         </div>
                         <div className="flex-1 min-w-0 pr-4">
@@ -365,7 +365,7 @@ const formatDateTime = (dateString: string) => {
                         </div>
                         <button 
                           onClick={() => handleDownloadDocument(doc.id, doc.name)}
-                          className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-white rounded-lg transition-all"
+                          className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-white dark:bg-stone-900 rounded-lg transition-all"
                         >
                           <Download className="w-4 h-4" />
                         </button>
@@ -379,16 +379,16 @@ const formatDateTime = (dateString: string) => {
 
           {/* Status Card or HR Action Form */}
           {user?.role === 'hr' && request.status === 'pending' ? (
-            <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
-              <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center">
-                <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+            <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
+              <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center">
+                <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                   Принять решение
                 </h2>
               </div>
 
-              <div className="bg-white p-4">
+              <div className="bg-white dark:bg-stone-900 p-4">
                 <div className="mb-5">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
                     Комментарий
                   </label>
                   <textarea
@@ -396,23 +396,23 @@ const formatDateTime = (dateString: string) => {
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Оставьте комментарий к решению..."
                     rows={3}
-                    className="w-full bg-[#fafaf9] border border-[#e7e5e4] rounded-[8px] px-3 py-2 font-['Geist:Regular',sans-serif] text-[14px] resize-none outline-none text-[#292524] placeholder:text-[#a6a09b] focus:bg-white focus:border-[#292524] transition-colors"
+                    className="w-full bg-[#fafaf9] dark:bg-stone-950 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] px-3 py-2 font-['Geist:Regular',sans-serif] text-[14px] resize-none outline-none text-[#292524] dark:text-stone-100 placeholder:text-[#a6a09b] focus:bg-white dark:bg-stone-900 focus:border-[#292524] dark:border-stone-700 transition-colors"
                   />
                 </div>
 
                 <div className="mb-6">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
                     Прикрепить документы
                   </label>
                   <div 
-                    className={`relative border border-[#e7e5e4] rounded-[8px] flex flex-col items-center justify-center p-4 cursor-pointer transition-colors group ${isDragging ? 'border-[#292524] bg-[#fafaf9] border-solid text-[#292524]' : 'border-dashed hover:bg-[#fafaf9] text-[#a6a09b]'}`}
+                    className={`relative border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex flex-col items-center justify-center p-4 cursor-pointer transition-colors group ${isDragging ? 'border-[#292524] dark:border-stone-700 bg-[#fafaf9] dark:bg-stone-950 border-solid text-[#292524] dark:text-stone-100' : 'border-dashed hover:bg-[#fafaf9] dark:bg-stone-950 text-[#a6a09b]'}`}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
                     onClick={() => fileInputRef.current?.click()}
                   >
                     <UploadIcon />
-                    <p className={`font-['Geist:Regular',sans-serif] text-[13px] mt-2 transition-colors ${isDragging ? 'text-[#292524]' : 'text-[#79716B] group-hover:text-[#292524]'}`}>
+                    <p className={`font-['Geist:Regular',sans-serif] text-[13px] mt-2 transition-colors ${isDragging ? 'text-[#292524] dark:text-stone-100' : 'text-[#79716B] group-hover:text-[#292524] dark:text-stone-100'}`}>
                       Нажмите или перетащите файлы
                     </p>
                     <p className="font-['Geist:Regular',sans-serif] text-[12px] text-[#A6A09B] mt-1">
@@ -430,7 +430,7 @@ const formatDateTime = (dateString: string) => {
                   {files.length > 0 && (
                     <div className="mt-3 flex flex-col gap-2">
                       {files.map((file, index) => (
-                        <div key={index} className="flex items-center gap-2 text-[#292524] font-['Geist:Regular',sans-serif] text-[13px] bg-[#f5f5f4] py-1 px-3 rounded-[6px]">
+                        <div key={index} className="flex items-center gap-2 text-[#292524] dark:text-stone-100 font-['Geist:Regular',sans-serif] text-[13px] bg-[#f5f5f4] dark:bg-stone-800/50 py-1 px-3 rounded-[6px]">
                           <span className="truncate flex-1">{file.name}</span>
                           <button 
                             type="button" 
@@ -452,14 +452,14 @@ const formatDateTime = (dateString: string) => {
                   <button 
                     onClick={() => handleHRAction('rejected')}
                     disabled={isSubmitting}
-                    className="flex-1 h-[36px] bg-white border-2 border-[#e7e5e4] text-[#292524] rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] uppercase hover:bg-[#fafaf9] hover:border-[#ff2056] hover:text-[#ff2056] transition-colors tracking-[0.7px] disabled:opacity-50"
+                    className="flex-1 h-[36px] bg-white dark:bg-stone-900 border-2 border-[#e7e5e4] dark:border-stone-800 text-[#292524] dark:text-stone-100 rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] uppercase hover:bg-[#fafaf9] dark:bg-stone-950 hover:border-[#ff2056] hover:text-[#ff2056] transition-colors tracking-[0.7px] disabled:opacity-50"
                   >
                     Отклонить
                   </button>
                   <button 
                     onClick={() => handleHRAction('approved')}
                     disabled={isSubmitting}
-                    className="flex-1 h-[36px] bg-[#44403b] border-2 border-[#292524] text-[#fafaf9] rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] uppercase hover:bg-[#292524] transition-colors tracking-[0.7px] disabled:opacity-50"
+                    className="flex-1 h-[36px] bg-[#44403b] dark:bg-stone-800 border-2 border-[#292524] dark:border-stone-700 text-[#fafaf9] dark:text-stone-100 rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] uppercase hover:bg-[#292524] dark:bg-stone-700 transition-colors tracking-[0.7px] disabled:opacity-50"
                   >
                     Согласовать
                   </button>
@@ -467,7 +467,7 @@ const formatDateTime = (dateString: string) => {
               </div>
             </div>
           ) : (
-            <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
+            <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
               <div className={`h-[48px] px-4 flex items-center ${statusConfig.cardBg.replace('bg-', 'bg-').replace(' border-', ' border-').replace('50', '100')}`}>
                 <div className={`flex items-center gap-2 ${statusConfig.titleColor}`}>
                   {statusConfig.icon}
@@ -477,12 +477,12 @@ const formatDateTime = (dateString: string) => {
                 </div>
               </div>
 
-              <div className="bg-white p-4">
+              <div className="bg-white dark:bg-stone-900 p-4">
                 {request.hrComment && (
                   <div className="mb-3">
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Комментарий</p>
-                    <div className="bg-[#f5f5f4] rounded-lg p-3">
-                      <p className="text-sm text-gray-700">
+                    <div className="bg-[#f5f5f4] dark:bg-stone-800/50 rounded-lg p-3">
+                      <p className="text-sm text-gray-700 dark:text-stone-300">
                         {request.hrComment}
                       </p>
                     </div>
@@ -494,14 +494,14 @@ const formatDateTime = (dateString: string) => {
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Ответные документы</p>
                     <div className="flex flex-col gap-2">
                       {request.responseDocs.map((doc) => (
-                        <div className="flex items-center gap-3 p-2 bg-[#f5f5f4] rounded-lg">
-                          <div className="w-6 h-6 bg-white border border-gray-200 rounded flex items-center justify-center text-xs flex-shrink-0">
+                        <div className="flex items-center gap-3 p-2 bg-[#f5f5f4] dark:bg-stone-800/50 rounded-lg">
+                          <div className="w-6 h-6 bg-white dark:bg-stone-900 border border-gray-200 rounded flex items-center justify-center text-xs flex-shrink-0">
                             📄
                           </div>
-                          <span className="text-sm text-gray-700 truncate flex-1">{doc.name}</span>
+                          <span className="text-sm text-gray-700 dark:text-stone-300 truncate flex-1">{doc.name}</span>
                           <button 
                             onClick={() => handleDownloadDocument(doc.id, doc.name)}
-                            className="p-1 text-gray-400 hover:text-gray-600 hover:bg-white rounded transition-all"
+                            className="p-1 text-gray-400 hover:text-gray-600 hover:bg-white dark:bg-stone-900 rounded transition-all"
                           >
                             <Download className="w-4 h-4" />
                           </button>
@@ -513,7 +513,7 @@ const formatDateTime = (dateString: string) => {
                 
                 {request.status === 'pending' && (
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-[#292524]">
+                    <span className="text-sm text-[#292524] dark:text-stone-100">
                       Заявка отправлена в отдел кадров
                     </span>
                   </div>
@@ -521,7 +521,7 @@ const formatDateTime = (dateString: string) => {
                 {request.status !== 'pending' && request.resolvedAt && (
                   <div className="flex flex-col gap-1">
                     <span className="text-xs text-gray-400 uppercase tracking-wider">Дата выполнения</span>
-                    <span className="text-sm text-[#292524]">
+                    <span className="text-sm text-[#292524] dark:text-stone-100">
                       {formatShortDateTime(request.resolvedAt)}
                     </span>
                   </div>
@@ -536,33 +536,33 @@ const formatDateTime = (dateString: string) => {
           {(user?.role === 'hr' || user?.role === 'admin') ? (
             <>
             {/* Employee Info Column for HR/Admins */}
-            <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
-              <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center">
-                <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+            <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
+              <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center">
+                <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                   Информация о сотруднике
                 </h2>
               </div>
 
-              <div className="bg-white p-4 space-y-3">
+              <div className="bg-white dark:bg-stone-900 p-4 space-y-3">
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Имя</p>
-                  <p className="text-sm text-gray-900">{request.authorName.split(' ')[0] || '—'}</p>
+                  <p className="text-sm text-gray-900 dark:text-stone-100">{request.authorName.split(' ')[0] || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Фамилия</p>
-                  <p className="text-sm text-gray-900">{request.authorName.split(' ').slice(1).join(' ') || '—'}</p>
+                  <p className="text-sm text-gray-900 dark:text-stone-100">{request.authorName.split(' ').slice(1).join(' ') || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</p>
-                  <p className="text-sm text-gray-900">{request.authorEmail ?? 'не указан'}</p>
+                  <p className="text-sm text-gray-900 dark:text-stone-100">{request.authorEmail ?? 'не указан'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Должность</p>
-                  <p className="text-sm text-gray-900">{request.authorPosition ?? 'не указано'}</p>
+                  <p className="text-sm text-gray-900 dark:text-stone-100">{request.authorPosition ?? 'не указано'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">ID</p>
-                  <p className="text-sm text-gray-900">{request.authorId}</p>
+                  <p className="text-sm text-gray-900 dark:text-stone-100">{request.authorId}</p>
                 </div>
               </div>
             </div>
@@ -570,17 +570,17 @@ const formatDateTime = (dateString: string) => {
           ) : (
             <>
             {/* History Column for regular users */}
-            <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
-              <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center">
+            <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
+              <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-gray-500" />
-                  <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     История
                   </h2>
                 </div>
               </div>
 
-              <div className="bg-white p-4 space-y-3">
+              <div className="bg-white dark:bg-stone-900 p-4 space-y-3">
                 {/* Step 1: Created */}
                 <div className="flex gap-3">
                   <div className="flex flex-col items-center">
@@ -592,7 +592,7 @@ const formatDateTime = (dateString: string) => {
                     )}
                   </div>
                   <div className="pb-3">
-                    <p className="text-sm text-gray-700 font-medium">Заявка создана</p>
+                    <p className="text-sm text-gray-700 dark:text-stone-300 font-medium">Заявка создана</p>
                     <p className="text-xs text-gray-400">{formatShortDateTime(request.createdAt)}</p>
                   </div>
                 </div>
@@ -610,7 +610,7 @@ const formatDateTime = (dateString: string) => {
                       )}
                     </div>
                     <div>
-                      <p className="text-sm text-gray-700 font-medium">
+                      <p className="text-sm text-gray-700 dark:text-stone-300 font-medium">
                         {request.status === 'approved' ? 'Согласовано' : 'Отклонено'}
                       </p>
                       <p className="text-xs text-gray-400">{formatShortDateTime(request.resolvedAt || request.createdAt)}</p>
@@ -628,7 +628,7 @@ const formatDateTime = (dateString: string) => {
           <div className="mt-4">
             <button 
               onClick={handleDeleteRequest}
-              className="w-full h-[36px] bg-white border-2 border-[#ff2056] text-[#ff2056] rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] uppercase hover:bg-[#ff2056] hover:text-white transition-colors tracking-[0.7px]"
+              className="w-full h-[36px] bg-white dark:bg-stone-900 border-2 border-[#ff2056] text-[#ff2056] rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] uppercase hover:bg-[#ff2056] hover:text-white transition-colors tracking-[0.7px]"
             >
               Удалить заявку
             </button>

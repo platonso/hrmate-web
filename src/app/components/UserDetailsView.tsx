@@ -97,7 +97,7 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
       {/* Header */}
       <div
         onClick={onBack}
-        className="mb-4 flex items-center gap-[6px] text-[#79716b] hover:text-[#292524] transition-colors cursor-pointer"
+        className="mb-4 flex items-center gap-[6px] text-[#79716b] dark:text-stone-400 hover:text-[#292524] dark:text-stone-100 transition-colors cursor-pointer"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -105,30 +105,30 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
         <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px]">Назад</span>
       </div>
 
-      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] mb-2">
+      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] dark:text-stone-100 mb-2">
         Информация о пользователе
       </h1>
-      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] mb-6">
+      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] dark:text-stone-400 mb-6">
         Личная информация и данные аккаунта сотрудника.
       </p>
 
       <div className="space-y-6">
         {/* Personal Info */}
-        <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
-            <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center">
-              <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+        <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
+            <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center">
+              <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                 Личные данные
               </h2>
             </div>
 
-            <div className="bg-white p-4">
+            <div className="bg-white dark:bg-stone-900 p-4">
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="flex flex-col gap-2">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     Имя
                   </label>
-                  <div className="relative h-[36px] w-full bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3">
-                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] flex-1">
+                  <div className="relative h-[36px] w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3">
+                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 flex-1">
                       {formData.firstName}
                     </span>
                     <button
@@ -141,11 +141,11 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     Фамилия
                   </label>
-                  <div className="relative h-[36px] w-full bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3">
-                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] flex-1">
+                  <div className="relative h-[36px] w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3">
+                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 flex-1">
                       {formData.lastName}
                     </span>
                     <button
@@ -158,11 +158,11 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     Email
                   </label>
-                  <div className="relative h-[36px] w-full bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3">
-                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] flex-1">
+                  <div className="relative h-[36px] w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3">
+                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 flex-1">
                       {formData.email}
                     </span>
                     <button
@@ -177,11 +177,11 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
               </div>
               <div className="w-[calc(33.333%-10.666px)]">
                 <div className="flex flex-col gap-2">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     Должность
                   </label>
-                  <div className="relative h-[36px] w-full bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3">
-                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] flex-1">
+                  <div className="relative h-[36px] w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3">
+                    <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 flex-1">
                       {formData.position || '—'}
                     </span>
                     <button
@@ -198,21 +198,21 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
         </div>
 
         {/* Account Info */}
-        <div className="border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden">
-          <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center">
-            <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+        <div className="border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden">
+          <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center">
+            <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
               Данные аккаунта
             </h2>
           </div>
 
-          <div className="bg-white p-4">
+          <div className="bg-white dark:bg-stone-900 p-4">
             <div className="flex gap-4">
               <div className="min-w-[360px]">
                 <div className="flex flex-col gap-2">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     ID
                   </label>
-                  <div className="relative h-[36px] w-full bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3">
+                  <div className="relative h-[36px] w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3">
                     <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#a6a09b] truncate pr-8 flex-1">
                       {user.id}
                     </span>
@@ -228,10 +228,10 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
               </div>
               <div className="min-w-[250px]">
                 <div className="flex flex-col gap-2">
-                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     Роль
                   </label>
-                  <div className="relative h-[36px] w-full bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3">
+                  <div className="relative h-[36px] w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3">
                     <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#a6a09b] flex-1">
                       {user.role === 'employee' ? 'Сотрудник' : user.role === 'hr' ? 'HR-специалист' : user.role === 'admin' ? 'Администратор' : user.role}
                     </span>
@@ -246,7 +246,7 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                   Статус
                 </label>
                 <div className="flex items-center gap-3">
@@ -261,7 +261,7 @@ export function UserDetailsView({ user, currentUser, onBack }: UserDetailsViewPr
                     <button
                       onClick={handleToggleActive}
                       disabled={isSubmitting}
-                      className="px-3 py-1 bg-white border border-[#e7e5e4] rounded-[6px] font-['Geist:Medium',sans-serif] font-medium text-[13px] text-[#292524] hover:bg-[#f5f5f4] transition-colors disabled:opacity-50"
+                      className="px-3 py-1 bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[6px] font-['Geist:Medium',sans-serif] font-medium text-[13px] text-[#292524] dark:text-stone-100 hover:bg-[#f5f5f4] dark:bg-stone-800/50 transition-colors disabled:opacity-50"
                     >
                       {isActive ? 'Деактивировать' : 'Активировать'}
                     </button>

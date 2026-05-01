@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { useAuth } from './AuthContext';
 import { api, User as ApiUser } from '../api';
+import svgPaths from "../../imports/svg-kae9lsjw89";
 
 interface UsersViewProps {
   onViewUser: (user: User) => void;
@@ -70,7 +71,7 @@ export function UsersView({ onViewUser }: UsersViewProps) {
     return (
       <div className="h-full py-6 overflow-y-auto">
         <div className="flex items-center justify-center h-64">
-          <div className="text-[#79716b] font-['Geist:Regular',sans-serif]">Загрузка...</div>
+          <div className="text-[#79716b] dark:text-stone-400 font-['Geist:Regular',sans-serif]">Загрузка...</div>
         </div>
       </div>
     );
@@ -88,27 +89,32 @@ export function UsersView({ onViewUser }: UsersViewProps) {
 
   return (
     <div className="h-full py-6 flex flex-col">
-      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] mb-2">
+      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] dark:text-stone-100 mb-2">
         Сотрудники
       </h1>
-      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] mb-6">
+      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] dark:text-stone-400 mb-6">
         Просмотр и управление сотрудниками организации.
       </p>
 
-      <div className="mb-6">
-        <div className="relative">
+      <div className="flex items-center justify-between mb-6">
+        <div className="h-[36px] w-1/2 relative">
           <input
             type="text"
             placeholder="Поиск по имени, email, должности..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-[36px] bg-white border border-[#e7e5e4] rounded-[8px] pl-3 pr-10 font-['Geist:Regular',sans-serif] text-[14px] focus:outline-none focus:border-[#292524]"
+            className="absolute bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 border-solid h-[36px] left-0 right-0 rounded-[8px] px-3 pr-10 font-['Geist:Regular',sans-serif] text-[14px] focus:outline-none focus:border-[#292524] dark:border-stone-700"
           />
+          <div className="absolute bottom-[2px] right-[2px] rounded-[12px] top-[2px] w-[32px] flex items-center justify-center">
+            <svg className="size-[14px]" fill="none" viewBox="0 0 14 14">
+              <path d={svgPaths.p17393000} stroke="#A6A09B" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.875" />
+            </svg>
+          </div>
         </div>
       </div>
 
-      <div className="bg-white border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden flex flex-col">
-        <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] font-['Geist_Mono:Medium',sans-serif] font-medium h-[48px] text-[12px] text-[#79716b] uppercase flex items-center px-4 shrink-0">
+      <div className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden flex flex-col">
+        <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 font-['Geist_Mono:Medium',sans-serif] font-medium h-[48px] text-[12px] text-[#79716b] dark:text-stone-400 uppercase flex items-center px-4 shrink-0">
           <div className="flex-[3] tracking-[0.48px]">Фамилия</div>
           <div className="flex-[3] tracking-[0.48px]">Имя</div>
           <div className="flex-[3] tracking-[0.48px]">Должность</div>
@@ -116,9 +122,9 @@ export function UsersView({ onViewUser }: UsersViewProps) {
           <div className="flex-[2] tracking-[0.48px]">Статус</div>
         </div>
 
-        <div className="divide-y divide-[#f5f5f4] overflow-y-auto max-h-[750px]">
+        <div className="divide-y divide-[#f5f5f4] dark:divide-stone-800 overflow-y-auto max-h-[750px]">
           {filteredUsers.length === 0 ? (
-            <div className="px-4 py-8 text-center text-[#79716b] font-['Geist:Regular',sans-serif] text-[14px]">
+            <div className="px-4 py-8 text-center text-[#79716b] dark:text-stone-400 font-['Geist:Regular',sans-serif] text-[14px]">
               Пользователи не найдены
             </div>
           ) : (
@@ -126,25 +132,25 @@ export function UsersView({ onViewUser }: UsersViewProps) {
               <div
                 key={user.id}
                 onClick={() => onViewUser(user)}
-                className="h-[56px] px-4 flex items-center cursor-pointer hover:bg-[#fafaf9] transition-colors"
+                className="h-[56px] px-4 flex items-center cursor-pointer hover:bg-[#fafaf9] dark:bg-stone-950 transition-colors"
               >
                 <div className="flex-[3] flex items-center">
-                  <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     {user.lastName}
                   </span>
                 </div>
                 <div className="flex-[3] flex items-center">
-                  <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+                  <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     {user.firstName}
                   </span>
                 </div>
                 <div className="flex-[3] flex items-center">
-                  <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] leading-[20px]">
+                  <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     {user.position || '—'}
                   </span>
                 </div>
                 <div className="flex-[3] flex items-center">
-                  <span className="font-['Geist:Regular',sans-serif] text-[14px] text-[#79716b] leading-[20px]">
+                  <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     {user.email}
                   </span>
                 </div>

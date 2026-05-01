@@ -43,28 +43,28 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
 
   return (
     <div className="h-full py-6 overflow-y-auto">
-      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] mb-2">
+      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] dark:text-stone-100 mb-2">
         Реестр заявок
       </h1>
-      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] mb-6">
+      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] dark:text-stone-400 mb-6">
         Просмотр и рассмотрение всех заявок сотрудников.
       </p>
 
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="bg-white border border-[#e7e5e4] rounded-[12px] p-4">
-          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] uppercase mb-1">Всего</p>
-          <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[24px] text-[#292524]">{stats.total}</p>
+        <div className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[12px] p-4">
+          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] dark:text-stone-400 uppercase mb-1">Всего</p>
+          <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[24px] text-[#292524] dark:text-stone-100">{stats.total}</p>
         </div>
-        <div className="bg-white border border-[#e7e5e4] rounded-[12px] p-4">
-          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] uppercase mb-1">На рассмотрении</p>
+        <div className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[12px] p-4">
+          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] dark:text-stone-400 uppercase mb-1">На рассмотрении</p>
           <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[24px] text-[#ea580c]">{stats.pending}</p>
         </div>
-        <div className="bg-white border border-[#e7e5e4] rounded-[12px] p-4">
-          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] uppercase mb-1">Согласовано</p>
+        <div className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[12px] p-4">
+          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] dark:text-stone-400 uppercase mb-1">Согласовано</p>
           <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[24px] text-[#16a34a]">{stats.approved}</p>
         </div>
-        <div className="bg-white border border-[#e7e5e4] rounded-[12px] p-4">
-          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] uppercase mb-1">Отклонено</p>
+        <div className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[12px] p-4">
+          <p className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] dark:text-stone-400 uppercase mb-1">Отклонено</p>
           <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[24px] text-[#dc2626]">{stats.rejected}</p>
         </div>
       </div>
@@ -76,7 +76,7 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
             placeholder="Поиск по теме, автору..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-[36px] bg-white border border-[#e7e5e4] rounded-[8px] pl-3 pr-10 font-['Geist:Regular',sans-serif] text-[14px] focus:outline-none focus:border-[#292524]"
+            className="w-full h-[36px] bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] pl-3 pr-10 font-['Geist:Regular',sans-serif] text-[14px] focus:outline-none focus:border-[#292524] dark:border-stone-700"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 w-[14px] h-[14px]">
             <svg fill="none" viewBox="0 0 14 14">
@@ -88,7 +88,7 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value as RequestStatus | 'all')}
-          className="h-[36px] bg-white border border-[#e7e5e4] rounded-[8px] px-3 font-['Geist:Regular',sans-serif] text-[14px] focus:outline-none focus:border-[#292524]"
+          className="h-[36px] bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] px-3 font-['Geist:Regular',sans-serif] text-[14px] focus:outline-none focus:border-[#292524] dark:border-stone-700"
         >
           <option value="all">Все статусы</option>
           <option value="pending">На рассмотрении</option>
@@ -97,9 +97,9 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
         </select>
       </div>
 
-      <div className="bg-white border border-[#e7e5e4] rounded-[16px] overflow-hidden">
-        <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] px-4 py-4">
-          <div className="grid grid-cols-12 gap-4 font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] uppercase">
+      <div className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[16px] overflow-hidden">
+        <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 px-4 py-4">
+          <div className="grid grid-cols-12 gap-4 font-['Geist_Mono:Medium',sans-serif] font-medium text-[12px] text-[#79716b] dark:text-stone-400 uppercase">
             <div className="col-span-4">Тема</div>
             <div className="col-span-2">Автор</div>
             <div className="col-span-2">Статус</div>
@@ -108,9 +108,9 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
           </div>
         </div>
 
-        <div className="divide-y divide-[#f5f5f4]">
+        <div className="divide-y divide-[#f5f5f4] dark:divide-stone-800">
           {filteredRequests.length === 0 ? (
-            <div className="px-4 py-8 text-center text-[#79716b] font-['Geist:Regular',sans-serif] text-[14px]">
+            <div className="px-4 py-8 text-center text-[#79716b] dark:text-stone-400 font-['Geist:Regular',sans-serif] text-[14px]">
               Заявки не найдены
             </div>
           ) : (
@@ -118,15 +118,15 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
               <button
                 key={request.id}
                 onClick={() => onViewRequest(request)}
-                className="w-full px-4 py-5 grid grid-cols-12 gap-4 items-center hover:bg-[#fafaf9] transition-colors text-left"
+                className="w-full px-4 py-5 grid grid-cols-12 gap-4 items-center hover:bg-[#fafaf9] dark:bg-stone-950 transition-colors text-left"
               >
                 <div className="col-span-4">
-                  <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[14px] text-[#292524] leading-[20px]">
+                  <p className="font-['Geist:SemiBold',sans-serif] font-semibold text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
                     {request.subject}
                   </p>
                 </div>
                 <div className="col-span-2">
-                  <span className="font-['Geist:Regular',sans-serif] text-[12px] text-[#292524] leading-[16px]">
+                  <span className="font-['Geist:Regular',sans-serif] text-[12px] text-[#292524] dark:text-stone-100 leading-[16px]">
                     {request.authorName}
                   </span>
                 </div>
@@ -136,7 +136,7 @@ export function AllRequestsView({ onViewRequest }: AllRequestsViewProps) {
                   </span>
                 </div>
                 <div className="col-span-3">
-                  <span className="font-['Geist:Regular',sans-serif] text-[12px] text-[#292524] leading-[16px]">
+                  <span className="font-['Geist:Regular',sans-serif] text-[12px] text-[#292524] dark:text-stone-100 leading-[16px]">
                     {new Date(request.createdAt).toLocaleDateString('ru-RU', {
                       day: 'numeric',
                       month: 'short',

@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useAuth } from './AuthContext';
+import { Logo } from './Logo';
+import { useTheme } from './ThemeProvider';
+import { Moon, Sun } from 'lucide-react';
 
 interface LoginScreenProps {
   onSwitchToRegister: () => void;
@@ -10,29 +13,49 @@ export function LoginScreen({ onSwitchToRegister }: LoginScreenProps) {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
+  const { theme, setTheme } = useTheme();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setError('');
+    setIsLoading(true);
 
-    const success = await login(email, password);
-    if (!success) {
-      setError('Неверный email или пароль');
+    try {
+      const result = await login(email, password);
+      if (!result.success) {
+        setError(result.error || 'Неверный email или пароль');
+      }
+    } catch {
+      setError('Ошибка входа');
+    } finally {
+      setIsLoading(false);
     }
+
+    return false;
   };
 
   return (
-    <div className="absolute bg-[#fafaf9] inset-0 flex items-center justify-center">
+    <div className="absolute bg-[#fafaf9] dark:bg-stone-950 inset-0 flex flex-col items-center justify-center">
+      <button
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        className="fixed bottom-4 left-4 p-2 text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors rounded-lg hover:bg-black/5 dark:hover:bg-white/5"
+      >
+        {theme === 'dark' ? <Moon size={20} /> : <Sun size={20} />}
+      </button>
+
+      <Logo className="w-[135px] h-[20px] text-[#292524] dark:text-stone-100 mb-8" />
       <div className="relative h-[344px] w-[384px]">
         {/* Белая карточка с формой */}
-        <div className="absolute bg-white border border-[#e7e5e4] border-solid h-[266px] left-0 right-0 rounded-[16px] top-[78.39px]">
+        <div className="absolute bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 border-solid h-[266px] left-0 right-0 rounded-[16px] top-[78.39px]">
           <form onSubmit={handleSubmit}>
             {/* Email Label */}
-            <div className="-translate-y-1/2 absolute flex flex-col font-['Geist:Medium',sans-serif] font-medium h-[20px] justify-center leading-[0] left-[24px] right-[312.28px] text-[#292524] text-[14px] top-[58px]">
+            <div className="-translate-y-1/2 absolute flex flex-col font-['Geist:Medium',sans-serif] font-medium h-[20px] justify-center leading-[0] left-[24px] right-[312.28px] text-[#292524] dark:text-stone-300 text-[14px] top-[58px]">
               <p>
                 <span className="leading-[20px]">Email</span>
-                <span className="leading-[20px] text-[#ff2056]">{` *`}</span>
+                <span className="leading-[20px] text-[#ff2056] dark:text-red-400">{` *`}</span>
               </p>
             </div>
 
@@ -41,15 +64,15 @@ export function LoginScreen({ onSwitchToRegister }: LoginScreenProps) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="absolute bg-white border border-[#e7e5e4] border-solid h-[36px] left-[24px] right-[24px] rounded-[8px] top-[72px] px-3 font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] focus:outline-none focus:border-[#292524]"
+              className="absolute bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-700 border-solid h-[36px] left-[24px] right-[24px] rounded-[8px] top-[72px] px-3 font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 focus:outline-none focus:border-[#292524] dark:focus:border-stone-500"
               required
             />
 
             {/* Password Label */}
-            <div className="-translate-y-1/2 absolute flex flex-col font-['Geist:Medium',sans-serif] font-medium h-[20px] justify-center leading-[0] left-[24px] right-[284.19px] text-[#292524] text-[14px] top-[134px]">
+            <div className="-translate-y-1/2 absolute flex flex-col font-['Geist:Medium',sans-serif] font-medium h-[20px] justify-center leading-[0] left-[24px] right-[284.19px] text-[#292524] dark:text-stone-300 text-[14px] top-[134px]">
               <p>
                 <span className="leading-[20px]">Password</span>
-                <span className="leading-[20px] text-[#ff2056]">{` *`}</span>
+                <span className="leading-[20px] text-[#ff2056] dark:text-red-400">{` *`}</span>
               </p>
             </div>
 
@@ -58,7 +81,7 @@ export function LoginScreen({ onSwitchToRegister }: LoginScreenProps) {
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="absolute bg-white border border-[#e7e5e4] border-solid h-[36px] left-[24px] right-[24px] rounded-[8px] top-[148px] px-3 pr-10 font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] focus:outline-none focus:border-[#292524]"
+              className="absolute bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-700 border-solid h-[36px] left-[24px] right-[24px] rounded-[8px] top-[148px] px-3 pr-10 font-['Geist:Regular',sans-serif] text-[14px] text-[#292524] dark:text-stone-100 focus:outline-none focus:border-[#292524] dark:focus:border-stone-500"
               required
             />
 
@@ -67,7 +90,7 @@ export function LoginScreen({ onSwitchToRegister }: LoginScreenProps) {
               type="button"
               aria-label="view-password"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-0 p-2 size-9 text-stone-500 cursor-pointer hover:text-stone-950"
+              className="absolute right-0 p-2 size-9 text-stone-500 dark:text-stone-400 cursor-pointer hover:text-stone-950 dark:hover:text-stone-200"
               style={{ top: '148px', left: '324px' }}
             >
               {showPassword ? (
@@ -84,29 +107,30 @@ export function LoginScreen({ onSwitchToRegister }: LoginScreenProps) {
               )}
             </button>
 
-            {/* Login Button */}
-            <button
-              type="submit"
-              className="absolute bg-[#44403b] border-2 border-[#292524] border-solid h-[32px] left-[24px] right-[24px] rounded-[12px] top-[208px] hover:bg-[#292524] transition-colors"
-            >
-              <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Geist_Mono:SemiBold',sans-serif] font-semibold h-[20px] justify-center leading-[0] left-[calc(50%+0.16px)] text-[#fafaf9] text-[14px] text-center top-1/2 uppercase">
-                <p className="leading-[20px]">ВОЙТИ</p>
-              </div>
-            </button>
+        {/* Login Button */}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="absolute bg-[#44403b] dark:bg-stone-800 border-2 border-[#292524] dark:border-stone-700 border-solid h-[32px] left-[24px] right-[24px] rounded-[12px] top-[208px] hover:bg-[#292524] dark:hover:bg-stone-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Geist_Mono',sans-serif] font-normal h-[20px] justify-center leading-[0] left-[calc(50%+0.16px)] text-[#fafaf9] dark:text-stone-100 text-[14px] text-center top-1/2 uppercase">
+              <p className="leading-[20px]">{isLoading ? 'ВХОД...' : 'ВОЙТИ'}</p>
+            </div>
+          </button>
           </form>
         </div>
 
         {/* Серая карточка с заголовком */}
-        <div className="absolute bg-[#f5f5f4] border border-[#e7e5e4] border-solid font-normal h-[102px] leading-[0] left-0 right-0 rounded-[16px] top-0">
-          <div className="-translate-y-1/2 absolute flex flex-col font-['Inter:Regular',sans-serif] h-[28.8px] justify-center left-[24px] not-italic right-[297.28px] text-[#44403b] text-[23.4px] top-[38.4px]">
+        <div className="absolute bg-[#f5f5f4] dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 border-solid font-normal h-[102px] leading-[0] left-0 right-0 rounded-[16px] top-0">
+          <div className="-translate-y-1/2 absolute flex flex-col font-['Inter:Regular',sans-serif] h-[28.8px] justify-center left-[24px] not-italic right-[297.28px] text-[#44403b] dark:text-stone-100 text-[23.4px] top-[38.4px]">
             <p className="leading-[28.8px]">Вход</p>
           </div>
-          <div className="-translate-y-1/2 absolute flex flex-col font-['Geist:Regular',sans-serif] h-[18px] justify-center left-[24px] right-[138px] text-[#79716b] text-[14px] top-[67px]">
+          <div className="-translate-y-1/2 absolute flex flex-col font-['Geist:Regular',sans-serif] h-[18px] justify-center left-[24px] right-[138px] text-[#79716b] dark:text-stone-400 text-[14px] top-[67px]">
             <p>
               <span className="leading-[18px]">{`Нет аккаунта? `}</span>
               <button
                 onClick={onSwitchToRegister}
-                className="[text-decoration-skip-ink:none] decoration-solid font-['Geist:Medium',sans-serif] font-medium text-[14px] leading-[16px] underline"
+                className="[text-decoration-skip-ink:none] decoration-solid font-['Geist:Medium',sans-serif] font-medium text-[14px] leading-[16px] underline hover:text-stone-300 transition-colors"
               >
                 Регистрация
               </button>
@@ -114,10 +138,15 @@ export function LoginScreen({ onSwitchToRegister }: LoginScreenProps) {
           </div>
         </div>
 
-        {/* Error Message */}
+        {/* Error Message Card */}
         {error && (
-          <div className="absolute top-[250px] left-[24px] right-[24px] text-[#ff2056] text-[12px] font-['Geist:Regular',sans-serif]">
-            {error}
+          <div className="absolute flex items-center gap-3 bg-[#fff1f2] dark:bg-red-950/30 border border-[#fecdd3] dark:border-red-900 rounded-[12px] p-4 left-0 right-0 transition-all" style={{ top: '360px' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-[#e11d48] dark:text-red-400">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span className="text-[#e11d48] dark:text-red-400 text-[14px] font-['Geist:Medium',sans-serif] leading-tight">{error}</span>
           </div>
         )}
       </div>

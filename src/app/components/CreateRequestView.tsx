@@ -97,7 +97,7 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
       <div className="py-6 max-w-[680px]">
         <button
           onClick={onBack}
-        className="mb-4 flex items-center gap-[6px] text-[#79716b] hover:text-[#292524] transition-colors"
+        className="mb-4 flex items-center gap-[6px] text-[#79716b] dark:text-stone-400 hover:text-[#292524] dark:text-stone-100 transition-colors"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -105,16 +105,16 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
         <span className="font-['Geist:Medium',sans-serif] font-medium text-[14px]">Назад</span>
       </button>
 
-      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] mb-2">
+      <h1 className="font-['Geist:SemiBold',sans-serif] font-semibold text-[18px] leading-[28px] text-[#292524] dark:text-stone-100 mb-2">
         Создать заявку
       </h1>
-      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] mb-6">
+      <p className="font-['Geist:Regular',sans-serif] text-[14px] leading-[20px] text-[#79716b] dark:text-stone-400 mb-6">
         Заполните форму для отправки новой заявки в отдел кадров.
       </p>
 
-      <form onSubmit={handleSubmit} className="bg-white border border-[#e7e5e4] border-solid rounded-[8px] overflow-hidden flex flex-col mb-6">
-        <div className="bg-[#f5f5f4] border-b border-[#e7e5e4] h-[48px] px-4 flex items-center">
-          <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px]">
+      <form onSubmit={handleSubmit} className="bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 border-solid rounded-[8px] overflow-hidden flex flex-col mb-6">
+        <div className="bg-[#f5f5f4] dark:bg-stone-800/50 border-b border-[#e7e5e4] dark:border-stone-800 h-[48px] px-4 flex items-center">
+          <h2 className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px]">
             Заявка
           </h2>
         </div>
@@ -122,7 +122,7 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
         <div className="p-6 flex flex-col gap-6">
           {/* Тема */}
           <div>
-            <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+            <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
               Тема <span className="text-[#ff2056]">*</span>
             </label>
             <input
@@ -130,14 +130,14 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
               placeholder="Например: Отпуск, Изменение графика"
-              className="w-full h-[36px] bg-white border border-[#e7e5e4] rounded-[8px] px-3 font-['Geist:Regular',sans-serif] text-[14px] outline-none text-[#292524] placeholder:text-[#a6a09b] focus:border-[#292524] transition-colors"
+              className="w-full h-[36px] bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] px-3 font-['Geist:Regular',sans-serif] text-[14px] outline-none text-[#292524] dark:text-stone-100 placeholder:text-[#a6a09b] focus:border-[#292524] dark:border-stone-700 transition-colors"
               required
             />
           </div>
 
           {/* Описание */}
           <div>
-            <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+            <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
               Описание
             </label>
             <textarea
@@ -145,20 +145,20 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Подробно опишите ваше обращение"
               rows={5}
-              className="w-full bg-white border border-[#e7e5e4] rounded-[8px] px-3 py-2 font-['Geist:Regular',sans-serif] text-[14px] resize-none outline-none text-[#292524] placeholder:text-[#a6a09b] focus:border-[#292524] transition-colors"
+              className="w-full bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] px-3 py-2 font-['Geist:Regular',sans-serif] text-[14px] resize-none outline-none text-[#292524] dark:text-stone-100 placeholder:text-[#a6a09b] focus:border-[#292524] dark:border-stone-700 transition-colors"
             />
           </div>
 
           {/* Даты */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+              <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
                 Дата начала
               </label>
-              <div className="relative w-full h-[36px] bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3 focus-within:border-[#292524] transition-colors cursor-pointer overflow-hidden">
+              <div className="relative w-full h-[36px] bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3 focus-within:border-[#292524] dark:border-stone-700 transition-colors cursor-pointer overflow-hidden">
                 <div className="absolute left-3 top-0 bottom-0 flex items-center pointer-events-none font-['Geist:Regular',sans-serif] text-[14px] z-0">
                   {formData.startDate ? (
-                    <span className="text-[#292524]">{formatDate(formData.startDate)}</span>
+                    <span className="text-[#292524] dark:text-stone-100">{formatDate(formData.startDate)}</span>
                   ) : (
                     <span className="text-[#a6a09b]">дд.мм.гггг</span>
                   )}
@@ -182,13 +182,13 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
               </div>
             </div>
             <div>
-              <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+              <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
                 Дата окончания
               </label>
-              <div className="relative w-full h-[36px] bg-white border border-[#e7e5e4] rounded-[8px] flex items-center px-3 focus-within:border-[#292524] transition-colors cursor-pointer overflow-hidden">
+              <div className="relative w-full h-[36px] bg-white dark:bg-stone-900 border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex items-center px-3 focus-within:border-[#292524] dark:border-stone-700 transition-colors cursor-pointer overflow-hidden">
                 <div className="absolute left-3 top-0 bottom-0 flex items-center pointer-events-none font-['Geist:Regular',sans-serif] text-[14px] z-0">
                   {formData.endDate ? (
-                    <span className="text-[#292524]">{formatDate(formData.endDate)}</span>
+                    <span className="text-[#292524] dark:text-stone-100">{formatDate(formData.endDate)}</span>
                   ) : (
                     <span className="text-[#a6a09b]">дд.мм.гггг</span>
                   )}
@@ -215,18 +215,18 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
 
           {/* Документы */}
           <div>
-            <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] leading-[20px] mb-2 block">
+            <label className="font-['Geist:Medium',sans-serif] font-medium text-[14px] text-[#292524] dark:text-stone-100 leading-[20px] mb-2 block">
               Документы
             </label>
             <div 
-              className={`relative border border-[#e7e5e4] rounded-[8px] flex flex-col items-center justify-center p-6 cursor-pointer transition-colors group ${isDragging ? 'border-[#292524] bg-[#fafaf9] border-solid text-[#292524]' : 'border-dashed hover:bg-[#fafaf9] text-[#a6a09b]'}`}
+              className={`relative border border-[#e7e5e4] dark:border-stone-800 rounded-[8px] flex flex-col items-center justify-center p-6 cursor-pointer transition-colors group ${isDragging ? 'border-[#292524] dark:border-stone-700 bg-[#fafaf9] dark:bg-stone-950 border-solid text-[#292524] dark:text-stone-100' : 'border-dashed hover:bg-[#fafaf9] dark:bg-stone-950 text-[#a6a09b]'}`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
             >
               <UploadIcon />
-              <p className={`font-['Geist:Regular',sans-serif] text-[14px] mt-3 transition-colors ${isDragging ? 'text-[#292524]' : 'text-[#79716B] group-hover:text-[#292524]'}`}>
+              <p className={`font-['Geist:Regular',sans-serif] text-[14px] mt-3 transition-colors ${isDragging ? 'text-[#292524] dark:text-stone-100' : 'text-[#79716B] group-hover:text-[#292524] dark:text-stone-100'}`}>
                 Нажмите для загрузки или перетащите файлы
               </p>
               <p className="font-['Geist:Regular',sans-serif] text-[12px] text-[#A6A09B] mt-1">
@@ -244,7 +244,7 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
             {files.length > 0 && (
               <div className="mt-3 flex flex-col gap-2">
                 {files.map((file, index) => (
-                  <div key={index} className="flex items-center gap-2 text-[#292524] font-['Geist:Regular',sans-serif] text-[13px] bg-[#f5f5f4] py-1 px-3 rounded-[6px]">
+                  <div key={index} className="flex items-center gap-2 text-[#292524] dark:text-stone-100 font-['Geist:Regular',sans-serif] text-[13px] bg-[#f5f5f4] dark:bg-stone-800/50 py-1 px-3 rounded-[6px]">
                     <span className="truncate">{file.name}</span>
                     <button 
                       type="button" 
@@ -267,17 +267,17 @@ export function CreateRequestView({ onBack }: CreateRequestViewProps) {
             <button
               type="button"
               onClick={onBack}
-              className="h-[36px] px-4 bg-white border-2 border-[#e7e5e4] rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] text-[#292524] uppercase hover:bg-[#fafaf9] transition-colors tracking-[0.7px]"
+              className="h-[36px] px-4 bg-white dark:bg-stone-900 border-2 border-[#e7e5e4] dark:border-stone-800 rounded-[12px] font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] text-[#292524] dark:text-stone-100 uppercase hover:bg-[#fafaf9] dark:bg-stone-950 transition-colors tracking-[0.7px]"
               disabled={isSubmitting}
             >
               ОТМЕНА
             </button>
             <button
               type="submit"
-              className="bg-[#44403b] border-2 border-[#292524] border-solid h-[36px] px-4 rounded-[12px] flex items-center justify-center hover:bg-[#292524] transition-colors disabled:opacity-50"
+              className="bg-[#44403b] dark:bg-stone-800 border-2 border-[#292524] dark:border-stone-700 border-solid h-[36px] px-4 rounded-[12px] flex items-center justify-center hover:bg-[#292524] dark:bg-stone-700 transition-colors disabled:opacity-50"
               disabled={isSubmitting}
             >
-              <span className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] text-[#fafaf9] uppercase tracking-[0.7px]">
+              <span className="font-['Geist_Mono:Medium',sans-serif] font-medium text-[13px] text-[#fafaf9] dark:text-stone-100 uppercase tracking-[0.7px]">
                 {isSubmitting ? 'ОТПРАВКА...' : 'ОТПРАВИТЬ'}
               </span>
             </button>

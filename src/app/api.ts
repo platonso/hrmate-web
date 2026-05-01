@@ -42,11 +42,6 @@ export interface FormWithDocsResponse extends FormResponse {
   resolution?: Resolution;
 }
 
-export interface FormsWithUserResponse {
-  forms: FormResponse[];
-  user: User;
-}
-
 export interface AuthResponse {
   token: string;
 }
@@ -93,8 +88,12 @@ class ApiClient {
       (response) => response,
       (error: AxiosError<ErrorResponse>) => {
         if (error.response?.status === 401) {
-          this.logout();
-          window.location.replace('/');
+          // Do not redirect if the error is from login or register
+          const url = error.config?.url;
+          if (url !== '/login' && url !== '/register') {
+            this.logout();
+            window.location.replace('/');
+          }
         }
         return Promise.reject(error);
       }
@@ -137,13 +136,13 @@ class ApiClient {
     return response.data;
   }
 
-  async getHrForms(params?: { user_id?: string; status?: string }): Promise<FormsWithUserResponse[]> {
-    const response = await this.client.get<FormsWithUserResponse[]>('/hr/forms', { params });
+  async getHrForms(params?: { user_id?: string; status?: string }): Promise<FormResponse[]> {
+    const response = await this.client.get<FormResponse[]>('/hr/forms', { params });
     return response.data;
   }
 
-  async getAdminForms(params?: { user_id?: string; status?: string }): Promise<FormsWithUserResponse[]> {
-    const response = await this.client.get<FormsWithUserResponse[]>('/admin/forms', { params });
+  async getAdminForms(params?: { user_id?: string; status?: string }): Promise<FormResponse[]> {
+    const response = await this.client.get<FormResponse[]>('/admin/forms', { params });
     return response.data;
   }
 

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { api } from '../api';
 
 export type UserRole = 'employee' | 'hr' | 'admin';
@@ -14,10 +14,15 @@ export interface User {
   isActive: boolean;
 }
 
+export interface AuthResult {
+  success: boolean;
+  error?: string;
+}
+
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<boolean>;
-  register: (data: RegisterData) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<AuthResult>;
+  register: (data: RegisterData) => Promise<AuthResult>;
   logout: () => void;
   loading: boolean;
 }
@@ -71,7 +76,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     initAuth();
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, password: string): Promise<AuthResult> => {
     try {
       const response = await api.login({ email, password });
       api.setToken(response.token);
@@ -80,23 +85,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(userData);
       
       localStorage.setItem('user_email', email);
-      return true;
+      return { success: true };
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError<{error?: {message?: string}}>;
-        if (axiosError.response?.data?.error?.message) {
-          console.error('Login failed:', axiosError.response.data.error.message);
-        } else {
-          console.error('Login failed:', error.message);
+        const axiosError = error as AxiosError<{error?: {code?: string, message?: string}}>;
+        
+        if (axiosError.response?.status === 403 && axiosError.response.data?.error?.code === 'USER_NOT_ACTIVE') {
+          return { success: false, error: 'Аккаунт не активен' };
         }
-      } else {
-        console.error('Login failed:', error);
+        
+        if (axiosError.response?.status === 401) {
+          return { success: false, error: 'Неверный email или пароль' };
+        }
+        
+        return { success: false, error: axiosError.response?.data?.error?.message || 'Ошибка входа' };
       }
-      return false;
+      return { success: false, error: 'Произошла непредвиденная ошибка' };
     }
   };
 
-  const register = async (data: RegisterData): Promise<boolean> => {
+  const register = async (data: RegisterData): Promise<AuthResult> => {
     try {
       const response = await api.register({
         email: data.email,
@@ -122,10 +130,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       
       localStorage.setItem('user_email', data.email);
-      return true;
-    } catch (error) {
-      console.error('Registration failed:', error);
-      return false;
+      return { success: true };
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<{error?: {message?: string}}>;
+        
+        if (axiosError.response?.status === 409) {
+          return { success: false, error: 'Пользователь с таким email уже существует' };
+        }
+        
+        return { success: false, error: axiosError.response?.data?.error?.message || 'Ошибка регистрации' };
+      }
+      return { success: false, error: 'Произошла непредвиденная ошибка' };
     }
   };
 

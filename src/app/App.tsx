@@ -4,7 +4,7 @@ import { AuthProvider, useAuth } from './components/AuthContext';
 import { LoginScreen } from './components/LoginScreen';
 import { RegisterScreen } from './components/RegisterScreen';
 import { Sidebar } from './components/Sidebar';
-import { MyRequestsView, Request } from './components/MyRequestsView';
+import { RequestsListView, Request } from './components/RequestsListView';
 import { CreateRequestView } from './components/CreateRequestView';
 import { ProfileView } from './components/ProfileView';
 import { RequestDetailsView } from './components/RequestDetailsView';
@@ -20,8 +20,8 @@ function AppContent() {
 
   if (loading) {
     return (
-      <div className="h-screen bg-[#fafaf9] flex items-center justify-center">
-        <div className="text-[#79716b] font-['Geist:Regular',sans-serif] text-[14px]">Загрузка...</div>
+      <div className="h-screen bg-[#fafaf9] dark:bg-stone-950 flex items-center justify-center">
+        <div className="text-[#79716b] dark:text-stone-400 font-['Geist:Regular',sans-serif] text-[14px]">Загрузка...</div>
       </div>
     );
   }
@@ -88,7 +88,7 @@ function AppContent() {
     switch (currentView) {
       case 'my-requests':
         return (
-          <MyRequestsView
+          <RequestsListView
             onViewRequest={handleViewRequest}
             onCreateNew={handleCreateNew}
           />
@@ -99,7 +99,7 @@ function AppContent() {
         return <UsersView onViewUser={handleViewUser} />;
       default:
         return (
-          <MyRequestsView
+          <RequestsListView
             onViewRequest={handleViewRequest}
             onCreateNew={handleCreateNew}
           />
@@ -108,7 +108,7 @@ function AppContent() {
   };
 
   return (
-    <div className="h-screen bg-[#fafaf9] overflow-hidden flex justify-center">
+    <div className="h-screen bg-[#fafaf9] dark:bg-stone-950 overflow-hidden flex justify-center">
       <div className="flex w-full max-w-[1272px]">
         <div className="flex-shrink-0">
           <Sidebar currentView={currentView} onNavigate={handleNavigate} />
